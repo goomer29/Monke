@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:Monke.Models"
+             xmlns:local="clr-namespace:Monke"
+             x:Class="Monke.MainPage" x:DataType="local:MainPage">
+
+    <ScrollView>
+        <!--  פריסה לאורך  -->
+        <StackLayout
+        Padding="10"
+        HorizontalOptions="Center"
+        Spacing="13" BindingContext="{Binding monkey}">
+            <!--שם הקוף-->
+            <Label x:DataType="models:Monkey" HorizontalOptions="Center" Text="{Binding Name}" />
+
+            <!--  מסגרת עגולה מסביב לתמונה  -->
+            <Border HeightRequest="180" WidthRequest="180">
+                <Border.StrokeShape>
+                    <RoundRectangle  CornerRadius="90" />
+                </Border.StrokeShape>
+                <Image x:DataType="models:Monkey" HorizontalOptions="Center" Source="{Binding Image}" />
+            </Border>
+            <!--תיאור הקוף-->
+            <Label x:DataType="models:Monkey" HorizontalOptions="Center" Text="{Binding Details}" />
+            <Label x:DataType="models:Monkey" HorizontalOptions="Center" Text="{Binding Population,StringFormat='Popolation: {0}'}" />
+            <HorizontalStackLayout>
+                <Button
+            x:Name="left_btn"
+            BorderColor="Brown"
+            BorderWidth="3"
+            Clicked="ChangePhoto"
+            CornerRadius="40"
+            IsEnabled="False"
+            HeightRequest="80"
+            WidthRequest="80"
+            Text="Left" >
+                </Button>
+                <Button
+            x:Name="right_btn"
+            BorderColor="Brown"
+            BorderWidth="3"
+            Clicked="ChangePhoto"
+            CornerRadius="40"
+            HeightRequest="80"
+            WidthRequest="80"
+            Text="Right">
+                </Button>
+            </HorizontalStackLayout>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
